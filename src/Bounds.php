@@ -79,7 +79,7 @@ class Bounds implements \ArrayAccess
         );
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return in_array(
             $offset,
@@ -92,7 +92,7 @@ class Bounds implements \ArrayAccess
         );
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if (in_array($offset, self::$southWestKeys, true)) {
             return $this->getSouthWest();
@@ -113,12 +113,12 @@ class Bounds implements \ArrayAccess
         throw new \InvalidArgumentException(sprintf('Invalid offset %s.', json_encode($offset)));
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         throw new \BadMethodCallException('Bounds is immutable.');
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         throw new \BadMethodCallException('Bounds is immutable.');
     }

@@ -88,7 +88,7 @@ class Ellipsoid implements \ArrayAccess
         return $this->inverseFlattening;
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return in_array(
             $offset,
@@ -102,7 +102,7 @@ class Ellipsoid implements \ArrayAccess
         );
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if (in_array($offset, self::$semiMajorAxisKeys, true)) {
             return $this->getSemiMajorAxis();
@@ -123,12 +123,12 @@ class Ellipsoid implements \ArrayAccess
         throw new \InvalidArgumentException(sprintf('Invalid offset %s.', json_encode($offset)));
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         throw new \BadMethodCallException('Ellipsoid is immutable.');
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         throw new \BadMethodCallException('Ellipsoid is immutable.');
     }

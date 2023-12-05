@@ -102,17 +102,17 @@ class Polygon implements \Countable, \ArrayAccess, \IteratorAggregate
         return $bounds;
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->points);
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->points);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if ($this->offsetExists($offset)) {
             return $this->points[$offset];
@@ -126,17 +126,17 @@ class Polygon implements \Countable, \ArrayAccess, \IteratorAggregate
         );
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         throw new \BadMethodCallException('Polygon is immutable.');
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         throw new \BadMethodCallException('Polygon is immutable.');
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->points);
     }
